@@ -9,6 +9,7 @@ public abstract class Character implements Destinationable, Talking {
     Character(String name, Place place) {
         this.name = name;
         this.localPlace = place;
+        System.out.println(this.getName() + " появляется. Локация: " + this.destinto());
     }
 
     @Override
@@ -24,6 +25,10 @@ public abstract class Character implements Destinationable, Talking {
         System.out.println(this.getName() + " старается помочь");
     }
 
+    public void moveTo(Place place) {
+        this.localPlace = place;
+        System.out.println(this.getName() + " перемещается в другое место: " + localPlace.toString());
+    }
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
