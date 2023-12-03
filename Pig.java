@@ -15,6 +15,12 @@ public class Pig extends Character {
         return this.state.toString();
     }
 
+    public void setState(State state) {
+        System.out.println("Уровень проснувшести " + this.getName() + " изменяется с \"" + this.getState() +
+                "\" на \"" + state.toString() + "\"");
+        this.state = state;
+    }
+
     public void jump() {
         System.out.println(this.getName() + " прыгает на месте");
     }

@@ -4,17 +4,20 @@ public class Main {
         Place coast = new Place("берег");
         Place dam = new Place("запруда");
 
+        Human krisRob = new Human("Кристофер Робин", coast);
+        krisRob.imagine();
+
         Kangaroo roo = new Kangaroo("Ру", dam);
-        Pig pig = new Pig("Пятачок", coast, State.COMPLETELY_AWAKE);
+        Pig pig = new Pig("Пятачок", coast, State.NOT_AWAKE);
         Owl owl = new Owl("Сова", coast);
         Kangaroo kanga = new Kangaroo("Кенга", coast);
         Donkey donkey = new Donkey("Иа", coast, Tail.UP);
         Rabbit rabbit = new Rabbit("Кролик", coast);
-        Human krisRob = new Human("Кристофер Робин", coast);
 
         roo.moveTo(pond);
         roo.swim();
 
+        pig.setState(State.COMPLETELY_AWAKE);
         pig.help();
         pig.jump();
         pig.say("Ой, ой!");
