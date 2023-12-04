@@ -1,6 +1,6 @@
 public class Donkey extends Character{
-    private Tail tail;
-    Donkey(String name, Place localPlace, Tail tail) {
+    private TailPosition tail;
+    Donkey(String name, Place localPlace, TailPosition tail) {
         super(name, localPlace);
         this.tail = tail;
         System.out.println("Хвост " + this.getName() + " " + this.getTailState());
@@ -19,7 +19,7 @@ public class Donkey extends Character{
         System.out.println(this.getName() + " садится");
     }
 
-    public void setTailState(Tail state) {
+    public void setTailState(TailPosition state) {
         System.out.println("Положение хвоста " + this.getName() + " изменяется с \"" + this.getTailState() +
                 "\" на \"" + state.toString() + "\"");
         this.tail = state;

@@ -1,9 +1,9 @@
-public enum Tail {
+public enum TailPosition {
     UP("поднят"), DOWN("опущен");
 
     private String tail;
 
-    Tail(String s) {
+    TailPosition(String s) {
         this.tail = s;
     }
 

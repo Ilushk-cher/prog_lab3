@@ -11,7 +11,7 @@ public class Main {
         Pig pig = new Pig("Пятачок", coast, State.NOT_AWAKE);
         Owl owl = new Owl("Сова", coast);
         Kangaroo kanga = new Kangaroo("Кенга", coast);
-        Donkey donkey = new Donkey("Иа", coast, Tail.UP);
+        Donkey donkey = new Donkey("Иа", coast, TailPosition.UP);
         Rabbit rabbit = new Rabbit("Кролик", coast);
 
         roo.moveTo(pond);
@@ -33,7 +33,7 @@ public class Main {
         donkey.help();
         donkey.moveTo(dam);
         donkey.sit();
-        donkey.setTailState(Tail.DOWN);
+        donkey.setTailState(TailPosition.DOWN);
         donkey.say("Все из-за этого мытья; но ты только держись за мой хвост, Ру, и все будет в порядке");
 
         krisRob.help();
