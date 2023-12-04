@@ -1,6 +1,11 @@
-public class Donkey extends Character{
+package Classes;
+
+import Abstracts.Character;
+import Enums.TailPosition;
+
+public class Donkey extends Character {
     private TailPosition tail;
-    Donkey(String name, Place localPlace, TailPosition tail) {
+    public Donkey(String name, Place localPlace, TailPosition tail) {
         super(name, localPlace);
         this.tail = tail;
         System.out.println("Хвост " + this.getName() + " " + this.getTailState());

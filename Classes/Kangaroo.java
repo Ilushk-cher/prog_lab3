@@ -1,5 +1,9 @@
-public class Kangaroo extends Character{
-    Kangaroo(String name, Place localPlace) {
+package Classes;
+
+import Abstracts.Character;
+
+public class Kangaroo extends Character {
+    public Kangaroo(String name, Place localPlace) {
         super(name, localPlace);
     }
 

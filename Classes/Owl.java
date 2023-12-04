@@ -1,5 +1,9 @@
+package Classes;
+
+import Abstracts.Character;
+
 public class Owl extends Character {
-    Owl(String name, Place localPlace) {
+    public Owl(String name, Place localPlace) {
         super(name, localPlace);
     }
 

@@ -1,3 +1,5 @@
+package Enums;
+
 public enum TailPosition {
     UP("поднят"), DOWN("опущен");
 

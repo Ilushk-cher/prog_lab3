@@ -1,3 +1,8 @@
+import Classes.*;
+import Enums.State;
+import Enums.TailPosition;
+import Interfaces.Talking;
+
 public class Main {
     public static void main(String[] args) {
         Place pond = new Place("водоем");

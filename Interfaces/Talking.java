@@ -1,3 +1,6 @@
+package Interfaces;
+
+import Abstracts.Character;
 
 public interface Talking {
     void say(String message);

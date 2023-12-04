@@ -1,6 +1,10 @@
+package Classes;
+
+import Interfaces.Destinationable;
+
 public class Place implements Destinationable {
     private final String name;
-    Place(String name){
+    public Place(String name){
         this.name = name;
     }
 

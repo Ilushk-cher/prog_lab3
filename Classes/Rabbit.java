@@ -1,10 +1,10 @@
-public class Human extends Character{
-    Human(String name, Place localPlace) {
-        super(name, localPlace);
-    }
+package Classes;
 
-    public void imagine() {
-        System.out.println(this.getName() + " начинает воображать...");
+import Abstracts.Character;
+
+public class Rabbit extends Character {
+    public Rabbit(String name, Place localPlace) {
+        super(name, localPlace);
     }
 
     public void say(String message) {

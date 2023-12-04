@@ -1,7 +1,12 @@
+package Classes;
+
+import Abstracts.Character;
+import Enums.State;
+
 public class Pig extends Character {
     private State state;
 
-    Pig(String name, Place localPlace, State state) {
+    public Pig(String name, Place localPlace, State state) {
         super(name, localPlace);
         this.state = state;
         System.out.println(this.getName() + " " + this.getState());

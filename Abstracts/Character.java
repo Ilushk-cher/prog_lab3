@@ -1,3 +1,9 @@
+package Abstracts;
+
+import Classes.Place;
+import Interfaces.Destinationable;
+import Interfaces.Talking;
+
 public abstract class Character implements Destinationable, Talking {
     protected Destinationable localPlace;
     private final String name;
@@ -6,7 +12,7 @@ public abstract class Character implements Destinationable, Talking {
         return localPlace;
     }
 
-    Character(String name, Place place) {
+    protected Character(String name, Place place) {
         this.name = name;
         this.localPlace = place;
         System.out.println(this.getName() + " появляется. Локация: " + this.destinto());
