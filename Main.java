@@ -1,7 +1,11 @@
 import Classes.*;
+import Enums.BodyPosition;
 import Enums.State;
 import Enums.TailPosition;
-import Interfaces.Talking;
+import Enums.TypeOfJump;
+import Interfaces.AbleToSpeak;
+
+import java.security.spec.PKCS8EncodedKeySpec;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,43 +14,43 @@ public class Main {
         Place dam = new Place("запруда");
 
         Human krisRob = new Human("Кристофер Робин", coast);
-        krisRob.imagine();
+        krisRob.startImagine();
 
-        Kangaroo roo = new Kangaroo("Ру", dam);
-        Pig pig = new Pig("Пятачок", coast, State.NOT_AWAKE);
+        Kangaroo roo = new Kangaroo("Ру", coast);
+        Pig pig = new Pig("Пятачок", coast, BodyPosition.LAY, State.NOT_AWAKE);
         Owl owl = new Owl("Сова", coast);
         Kangaroo kanga = new Kangaroo("Кенга", coast);
-        Donkey donkey = new Donkey("Иа", coast, TailPosition.UP);
+        Donkey donkey = new Donkey("Иа", coast);
         Rabbit rabbit = new Rabbit("Кролик", coast);
 
         roo.moveTo(pond);
-        roo.swim();
+        roo.startSwim();
 
         pig.setState(State.COMPLETELY_AWAKE);
-        pig.help();
-        pig.jump();
+        pig.setBodyPosition(BodyPosition.STAND);
+        pig.help(Boolean.TRUE);
+        pig.jump(TypeOfJump.ON_SPOT);
         pig.say("Ой, ой!");
 
-        owl.help();
-        owl.say("в случае неожиданного погружения в воду самое важное - это держать голову над поверхностью");
+        owl.help(Boolean.TRUE);
+        owl.say("В случае неожиданного погружения в воду самое важное - это держать голову над поверхностью");
 
-        kanga.help();
-        kanga.jump();
-        Talking.ask(kanga, roo, "дорогой, ты действительно цел?");
-        Talking.answer(roo, kanga, "смотрите, как я плаваю!");
+        kanga.help(Boolean.TRUE);
+        kanga.jump(TypeOfJump.HUGE_LEAPS);
+        AbleToSpeak.ask(kanga, roo, "Дорогой, ты действительно цел?");
 
-        donkey.help();
+        AbleToSpeak.answer(roo, "Смотрите, как я плаваю!");
+
+        donkey.help(Boolean.TRUE);
         donkey.moveTo(dam);
-        donkey.sit();
-        donkey.setTailState(TailPosition.DOWN);
+        donkey.setBodyPosition(BodyPosition.SIT);
+        donkey.setTailPosition(TailPosition.DOWN);
         donkey.say("Все из-за этого мытья; но ты только держись за мой хвост, Ру, и все будет в порядке");
 
-        krisRob.help();
-        krisRob.run();
-        krisRob.say("все сюда!");
+        krisRob.help(Boolean.TRUE);
+        krisRob.setSpeed(10);
 
-        rabbit.help();
-        rabbit.run();
-        rabbit.say("все сюда!");
+        rabbit.help(Boolean.TRUE);
+        rabbit.setSpeed(10);
     }
 }

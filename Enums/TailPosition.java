@@ -3,14 +3,14 @@ package Enums;
 public enum TailPosition {
     UP("поднят"), DOWN("опущен");
 
-    private String tail;
+    private final String tailPosition;
 
     TailPosition(String s) {
-        this.tail = s;
+        this.tailPosition = s;
     }
 
     @Override
     public String toString() {
-        return this.tail;
+        return this.tailPosition;
     }
 }

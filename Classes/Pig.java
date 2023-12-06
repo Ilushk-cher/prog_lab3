@@ -1,13 +1,23 @@
 package Classes;
 
-import Abstracts.Character;
+import Abstracts.Animals;
+import Enums.BodyPosition;
 import Enums.State;
+import Enums.TailPosition;
 
-public class Pig extends Character {
+public class Pig extends Animals {
     private State state;
 
-    public Pig(String name, Place localPlace, State state) {
+    public Pig(String name, Place localPlace) {
         super(name, localPlace);
+    }
+    public Pig(String name, Place localPlace, BodyPosition bodyPosition, State state) {
+        super(name, localPlace, bodyPosition);
+        this.state = state;
+        System.out.println(this.getName() + " " + this.getState());
+    }
+    public Pig(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tailPosition, State state) {
+        super(name, localPlace, bodyPosition, tailPosition);
         this.state = state;
         System.out.println(this.getName() + " " + this.getState());
     }
@@ -21,12 +31,11 @@ public class Pig extends Character {
     }
 
     public void setState(State state) {
-        System.out.println("Уровень проснувшести " + this.getName() + " изменяется с \"" + this.getState() +
-                "\" на \"" + state.toString() + "\"");
-        this.state = state;
-    }
+        if (this.state != state){
+            System.out.println("Уровень проснувшести " + this.getName() + " изменяется с \"" + this.getState() +
+                    "\" на \"" + state.toString() + "\"");
+            this.state = state;
+        } else System.out.println(this.getName() + " все еще " + getBodyPosition());
 
-    public void jump() {
-        System.out.println(this.getName() + " прыгает на месте");
     }
 }

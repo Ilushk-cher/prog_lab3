@@ -1,8 +1,8 @@
 package Classes;
 
-import Interfaces.Destinationable;
+import Interfaces.AbleToBeSwr;
 
-public class Place implements Destinationable {
+public class Place implements AbleToBeSwr {
     private final String name;
     public Place(String name){
         this.name = name;
@@ -12,7 +12,7 @@ public class Place implements Destinationable {
         return name;
     }
 
-    public Destinationable destinto() {
+    public Place whatPlace() {
         return this;
     }
 

@@ -1,32 +1,21 @@
 package Classes;
 
-import Abstracts.Character;
+import Abstracts.Animals;
+import Enums.BodyPosition;
 import Enums.TailPosition;
 
-public class Donkey extends Character {
-    private TailPosition tail;
-    public Donkey(String name, Place localPlace, TailPosition tail) {
+public class Donkey extends Animals {
+    public Donkey(String name, Place localPlace) {
         super(name, localPlace);
-        this.tail = tail;
-        System.out.println("Хвост " + this.getName() + " " + this.getTailState());
-
     }
-
-    public String getTailState() {
-        return this.tail.toString();
+    public Donkey(String name, Place localPlace, BodyPosition bodyPosition) {
+        super(name, localPlace, bodyPosition);
+    }
+    public Donkey(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tailPosition) {
+        super(name, localPlace, bodyPosition, tailPosition);
     }
 
     public void say(String message) {
         System.out.println(this.getName() + " приговаривает: \"" + message + "\"");
-    }
-
-    public void sit() {
-        System.out.println(this.getName() + " садится");
-    }
-
-    public void setTailState(TailPosition state) {
-        System.out.println("Положение хвоста " + this.getName() + " изменяется с \"" + this.getTailState() +
-                "\" на \"" + state.toString() + "\"");
-        this.tail = state;
     }
 }
