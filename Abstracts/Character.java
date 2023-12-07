@@ -11,7 +11,7 @@ public abstract class Character implements AbleToSpeak, AbleToBeSwr, AbleToMove,
     protected BodyPosition bodyPosition;
     private final String name;
     private TypeOfJump typeOfJump = TypeOfJump.NONE;
-    private Boolean isHelping = Boolean.FALSE;
+    private boolean isHelping = Boolean.FALSE;
     private int speed = 0;
     private TypeOfGo typeOfGo = TypeOfGo.STOP;
 
@@ -91,7 +91,7 @@ public abstract class Character implements AbleToSpeak, AbleToBeSwr, AbleToMove,
         System.out.println("помогает");
     }
 
-    public Boolean getIsHelping() {
+    public boolean getIsHelping() {
         return this.isHelping;
     }
 

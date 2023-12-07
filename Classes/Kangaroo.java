@@ -7,7 +7,7 @@ import Interfaces.AbleToJump;
 import Interfaces.AbleToSwim;
 
 public class Kangaroo extends Animals implements AbleToSwim {
-    private Boolean isSwimming = Boolean.FALSE;
+    private boolean isSwimming = Boolean.FALSE;
 
     public Kangaroo(String name, Place localPlace) {
         super(name, localPlace);
@@ -39,7 +39,7 @@ public class Kangaroo extends Animals implements AbleToSwim {
         else System.out.println(this.getName() + " все еще не плавает");
     }
 
-    public Boolean getIsSwimming() {
+    public boolean getIsSwimming() {
         return this.isSwimming;
     }
 }
