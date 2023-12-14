@@ -4,16 +4,18 @@ import Classes.Place;
 import Enums.BodyPosition;
 import Enums.TailPosition;
 
-public abstract class Animals extends Character {
+public abstract class Animal extends Character {
     private TailPosition tailPosition;
 
-    protected  Animals(String name, Place localPlace) {
+    protected Animal(String name, Place localPlace) {
         super(name, localPlace);
+        this.tailPosition = TailPosition.UP;
     }
-    protected Animals(String name, Place localPlace, BodyPosition bodyPosition) {
+    protected Animal(String name, Place localPlace, BodyPosition bodyPosition) {
         super(name, localPlace, bodyPosition);
+        this.tailPosition = TailPosition.UP;
     }
-    public Animals(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tail) {
+    public Animal(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tail) {
         super(name, localPlace, bodyPosition);
         this.tailPosition = tail;
         System.out.println("Хвост " + this.getName() + " " + this.getTailPosition());
@@ -24,16 +26,10 @@ public abstract class Animals extends Character {
     }
 
     public void setTailPosition(TailPosition tailPosition) {
-        try {
-            if (this.tailPosition != tailPosition) {
-                System.out.println("Положение хвоста " + this.getName() + " изменяется с \"" + this.getTailPosition() +
-                        "\" на \"" + tailPosition.toString() + "\"");
-                this.tailPosition = tailPosition;
-            } else System.out.println("Хвост " + this.getName() + " все еще " + this.getTailPosition());
-        } catch (NullPointerException e) {
+        if (this.tailPosition != tailPosition) {
+            System.out.println("Положение хвоста " + this.getName() + " изменяется с \"" + this.getTailPosition() +
+                    "\" на \"" + tailPosition.toString() + "\"");
             this.tailPosition = tailPosition;
-            System.out.println("Хвост " + this.getName() + " теперь " + this.getTailPosition());
-        }
-
+        } else System.out.println("Хвост " + this.getName() + " все еще " + this.getTailPosition());
     }
 }

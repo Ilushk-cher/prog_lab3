@@ -1,12 +1,11 @@
 package Classes;
 
-import Abstracts.Animals;
+import Abstracts.Animal;
 import Enums.BodyPosition;
 import Enums.TailPosition;
-import Interfaces.AbleToJump;
 import Interfaces.AbleToSwim;
 
-public class Kangaroo extends Animals implements AbleToSwim {
+public class Kangaroo extends Animal implements AbleToSwim {
     private boolean isSwimming = Boolean.FALSE;
 
     public Kangaroo(String name, Place localPlace) {

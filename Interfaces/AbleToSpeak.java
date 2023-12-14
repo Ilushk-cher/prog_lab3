@@ -5,14 +5,9 @@ import Abstracts.Character;
 public interface AbleToSpeak {
     void say(String message);
 
-    static void ask(Character fromWho, Character toWho, String message) {
-        System.out.println(fromWho.getName() + " спрашивает " + toWho.getName() + ": \"" + message + "\"");
-    }
+    void catchMessage(Character character, String message);
 
-    static void answer(Character fromWho, Character toWho, String message) {
-        System.out.println(fromWho.getName() + " отвечает " + toWho.getName() + ": \"" + message + "\"");
-    }
-    static void answer(Character fromWho, String message) {
-        System.out.println(fromWho.getName() + " отвечает: \"" + message + "\"");
-    }
+    void sendMessage(Character character, String message);
+
+    void answerMessage(String message);
 }

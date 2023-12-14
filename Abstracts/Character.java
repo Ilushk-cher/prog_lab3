@@ -6,7 +6,7 @@ import Enums.TypeOfGo;
 import Enums.TypeOfJump;
 import Interfaces.*;
 
-public abstract class Character implements AbleToSpeak, AbleToBeSwr, AbleToMove, AbleToHelp, AbleToGo, AbleToJump {
+public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, AbleToGo, AbleToJump {
     protected Place localPlace;
     protected BodyPosition bodyPosition;
     private final String name;
@@ -14,6 +14,9 @@ public abstract class Character implements AbleToSpeak, AbleToBeSwr, AbleToMove,
     private boolean isHelping = Boolean.FALSE;
     private int speed = 0;
     private TypeOfGo typeOfGo = TypeOfGo.STOP;
+    private boolean haveMessage = Boolean.FALSE;
+    private String lastMessage;
+    private Character fromWhoMessage;
 
     public Place whatPlace(){
         return localPlace;
@@ -113,6 +116,28 @@ public abstract class Character implements AbleToSpeak, AbleToBeSwr, AbleToMove,
 
     public int getSpeed() {
         return this.speed;
+    }
+
+    public void catchMessage(Character character, String message) {
+        this.haveMessage = Boolean.TRUE;
+        this.lastMessage = message;
+        this.fromWhoMessage = character;
+        System.out.println(this.getName() + " получает сообщение от " + character.getName());
+    }
+
+    public void sendMessage(Character character, String message) {
+        System.out.print(this.getName() + " обращается к " + character.getName() + ": ");
+        System.out.println("\"" + message + "\"");
+        character.catchMessage(this, message);
+    }
+
+    public void answerMessage(String message) {
+        System.out.print(this.getName() + " отвечает " + fromWhoMessage.getName() + ": ");
+        System.out.println("\"" + message + "\"");
+        haveMessage = Boolean.FALSE;
+    }
+    public String getLastMessage() {
+        return this.lastMessage;
     }
 
     @Override

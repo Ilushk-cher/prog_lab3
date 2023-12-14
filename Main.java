@@ -5,8 +5,6 @@ import Enums.TailPosition;
 import Enums.TypeOfJump;
 import Interfaces.AbleToSpeak;
 
-import java.security.spec.PKCS8EncodedKeySpec;
-
 public class Main {
     public static void main(String[] args) {
         Place pond = new Place("водоем");
@@ -37,9 +35,9 @@ public class Main {
 
         kanga.help(Boolean.TRUE);
         kanga.jump(TypeOfJump.HUGE_LEAPS);
-        AbleToSpeak.ask(kanga, roo, "Дорогой, ты действительно цел?");
 
-        AbleToSpeak.answer(roo, "Смотрите, как я плаваю!");
+        kanga.sendMessage(roo, "Дорогой, ты действительно цел?");
+        roo.answerMessage("Смотрите, как я плаваю!");
 
         donkey.help(Boolean.TRUE);
         donkey.moveTo(dam);

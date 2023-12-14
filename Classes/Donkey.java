@@ -1,10 +1,10 @@
 package Classes;
 
-import Abstracts.Animals;
+import Abstracts.Animal;
 import Enums.BodyPosition;
 import Enums.TailPosition;
 
-public class Donkey extends Animals {
+public class Donkey extends Animal {
     public Donkey(String name, Place localPlace) {
         super(name, localPlace);
     }

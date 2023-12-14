@@ -1,11 +1,11 @@
 package Classes;
 
-import Abstracts.Animals;
+import Abstracts.Animal;
 import Enums.BodyPosition;
 import Enums.State;
 import Enums.TailPosition;
 
-public class Pig extends Animals {
+public class Pig extends Animal {
     private State state;
 
     public Pig(String name, Place localPlace) {
