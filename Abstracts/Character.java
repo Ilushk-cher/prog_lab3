@@ -1,9 +1,11 @@
 package Abstracts;
 
+import Classes.MessageHistory;
 import Classes.Place;
 import Enums.BodyPosition;
 import Enums.TypeOfGo;
 import Enums.TypeOfJump;
+import Enums.TypeOfSpeaking;
 import Interfaces.*;
 
 public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, AbleToGo, AbleToJump {
@@ -17,6 +19,7 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
     private boolean haveMessage = Boolean.FALSE;
     private String lastMessage;
     private Character fromWhoMessage;
+    private TypeOfSpeaking typeOfSpeaking = TypeOfSpeaking.SPEAK;
 
     public Place whatPlace(){
         return localPlace;
@@ -118,6 +121,15 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
         return this.speed;
     }
 
+    public void say(String message, TypeOfSpeaking typeOfSpeaking) {
+        System.out.println(this.getName() + " " + typeOfSpeaking + ": \"" + message + "\"");
+        MessageHistory.addNewMessage(this, message, typeOfSpeaking);
+    }
+
+    public void say(String message) {
+        System.out.println(this.getName() + " " + TypeOfSpeaking.SPEAK + ": \"" + message + "\"");
+        MessageHistory.addNewMessage(this, message, typeOfSpeaking);
+    }
     public void catchMessage(Character character, String message) {
         this.haveMessage = Boolean.TRUE;
         this.lastMessage = message;
@@ -129,12 +141,15 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
         System.out.print(this.getName() + " обращается к " + character.getName() + ": ");
         System.out.println("\"" + message + "\"");
         character.catchMessage(this, message);
+        MessageHistory.addNewMessage(this, character, message, typeOfSpeaking);
+
     }
 
     public void answerMessage(String message) {
         System.out.print(this.getName() + " отвечает " + fromWhoMessage.getName() + ": ");
         System.out.println("\"" + message + "\"");
         haveMessage = Boolean.FALSE;
+        MessageHistory.addNewMessage(this, fromWhoMessage, message, typeOfSpeaking);
     }
     public String getLastMessage() {
         return this.lastMessage;
@@ -145,14 +160,12 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Character p = (Character) o;
-        return this.name.equals(p.name);
+        return this.hashCode() == p.hashCode();
     }
 
     @Override
     public int hashCode(){
-        return name.hashCode();
+        return name.hashCode() + this.getClass().hashCode();
     }
-
-    public abstract void say(String message);
 }
 

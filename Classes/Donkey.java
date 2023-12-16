@@ -3,6 +3,7 @@ package Classes;
 import Abstracts.Animal;
 import Enums.BodyPosition;
 import Enums.TailPosition;
+import Enums.TypeOfSpeaking;
 
 public class Donkey extends Animal {
     public Donkey(String name, Place localPlace) {
@@ -15,7 +16,8 @@ public class Donkey extends Animal {
         super(name, localPlace, bodyPosition, tailPosition);
     }
 
+    @Override
     public void say(String message) {
-        System.out.println(this.getName() + " приговаривает: \"" + message + "\"");
+        super.say(message, TypeOfSpeaking.SENTENCING);
     }
 }

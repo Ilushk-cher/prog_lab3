@@ -15,7 +15,7 @@ public abstract class Animal extends Character {
         super(name, localPlace, bodyPosition);
         this.tailPosition = TailPosition.UP;
     }
-    public Animal(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tail) {
+    protected Animal(String name, Place localPlace, BodyPosition bodyPosition, TailPosition tail) {
         super(name, localPlace, bodyPosition);
         this.tailPosition = tail;
         System.out.println("Хвост " + this.getName() + " " + this.getTailPosition());

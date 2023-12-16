@@ -3,7 +3,6 @@ import Enums.BodyPosition;
 import Enums.State;
 import Enums.TailPosition;
 import Enums.TypeOfJump;
-import Interfaces.AbleToSpeak;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,5 +49,8 @@ public class Main {
 
         rabbit.help(Boolean.TRUE);
         rabbit.setSpeed(10);
+
+        System.out.println();
+        MessageHistory.printMessageHistory();
     }
 }

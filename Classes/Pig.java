@@ -4,9 +4,11 @@ import Abstracts.Animal;
 import Enums.BodyPosition;
 import Enums.State;
 import Enums.TailPosition;
+import Enums.TypeOfSpeaking;
 
 public class Pig extends Animal {
     private State state;
+    private final TypeOfSpeaking typeOfSpeaking = TypeOfSpeaking.SCREAM;
 
     public Pig(String name, Place localPlace) {
         super(name, localPlace);
@@ -22,10 +24,6 @@ public class Pig extends Animal {
         System.out.println(this.getName() + " " + this.getState());
     }
 
-    public void say(String message) {
-        System.out.println(this.getName() + " кричит: \"" + message + "\"");
-    }
-
     public String getState() {
         return this.state.toString();
     }
@@ -36,6 +34,10 @@ public class Pig extends Animal {
                     "\" на \"" + state.toString() + "\"");
             this.state = state;
         } else System.out.println(this.getName() + " все еще " + getBodyPosition());
+    }
 
+    @Override
+    public void say(String message) {
+        super.say(message, TypeOfSpeaking.SCREAM);
     }
 }
