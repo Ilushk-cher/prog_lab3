@@ -2,7 +2,6 @@ package Classes;
 
 import Abstracts.Character;
 import Enums.BodyPosition;
-import Enums.WhatReal;
 import Interfaces.AbleToImagine;
 
 public class Human extends Character implements AbleToImagine {
@@ -28,6 +27,19 @@ public class Human extends Character implements AbleToImagine {
             System.out.println(this.getName() + " возвращается в реальность...");
         }
         else System.out.println(this.getName() + " все еще находится в реальности...");
+    }
+
+    public enum WhatReal {
+        REAl("в реальности"), UNREAL("в воображении");
+
+        private final String whatReal;
+
+        WhatReal(String s) { this.whatReal = s; }
+
+        @Override
+        public String toString() {
+            return this.whatReal;
+        }
     }
 
     public WhatReal getWhatReal() {

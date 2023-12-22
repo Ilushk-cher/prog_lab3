@@ -1,7 +1,7 @@
 package Enums;
 
 public enum TypeOfSpeaking {
-    SPEAK("говорит"), SCREAM("кричит"), EXPLANATION("объясняет"), SENTENCING("приговариет");
+    SPEAK("говорит"), SCREAM("кричит"), EXPLANATION("объясняет"), SENTENCING("приговариет"), SQUEAK("пищит");
 
     private final String typeOfSpeaking;
 

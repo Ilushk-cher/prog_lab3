@@ -38,6 +38,7 @@ public class Kangaroo extends Animal implements AbleToSwim {
         else System.out.println(this.getName() + " все еще не плавает");
     }
 
+
     public boolean getIsSwimming() {
         return this.isSwimming;
     }

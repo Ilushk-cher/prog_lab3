@@ -5,7 +5,9 @@ import Enums.BodyPosition;
 import Enums.TailPosition;
 import Enums.TypeOfSpeaking;
 
-public class Donkey extends Animal {
+public class Donkey extends Animal implements Cloneable {
+    private final TypeOfSpeaking typeOfSpeaking = TypeOfSpeaking.SENTENCING;
+
     public Donkey(String name, Place localPlace) {
         super(name, localPlace);
     }
@@ -18,6 +20,11 @@ public class Donkey extends Animal {
 
     @Override
     public void say(String message) {
-        super.say(message, TypeOfSpeaking.SENTENCING);
+        super.say(message, this.typeOfSpeaking);
+    }
+
+    @Override
+    public Donkey clone() throws CloneNotSupportedException {
+        return (Donkey) super.clone();
     }
 }

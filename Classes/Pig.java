@@ -38,6 +38,6 @@ public class Pig extends Animal {
 
     @Override
     public void say(String message) {
-        super.say(message, TypeOfSpeaking.SCREAM);
+        super.say(message, this.typeOfSpeaking);
     }
 }

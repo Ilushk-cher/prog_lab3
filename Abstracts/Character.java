@@ -21,22 +21,17 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
     private Character fromWhoMessage;
     private TypeOfSpeaking typeOfSpeaking = TypeOfSpeaking.SPEAK;
 
-    public Place whatPlace(){
-        return localPlace;
-    }
-
-
     protected Character(String name, Place place) {
         this.name = name;
         this.localPlace = place;
         this.bodyPosition = BodyPosition.STAND;
-        System.out.println(this.getName() + " появляется. Локация: " + this.whatPlace());
+        System.out.println(this.getName() + " появляется. Локация: " + this.localPlace);
     }
     protected Character(String name, Place place, BodyPosition bodyPosition) {
         this.name = name;
         this.localPlace = place;
         this.bodyPosition = bodyPosition;
-        System.out.println(this.getName() + " появляется. Локация: " + this.whatPlace());
+        System.out.println(this.getName() + " появляется. Локация: " + this.localPlace);
         System.out.println("Положение тела: " + this.bodyPosition);
     }
 
@@ -117,8 +112,30 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
         System.out.println(" теперь " + this.typeOfGo.toString());
     }
 
-    public int getSpeed() {
-        return this.speed;
+    public MovingContainer getMovingContainer() {
+        class CharacterMovingContainer implements MovingContainer {
+            final int speed = Character.this.speed;
+            final TypeOfGo typeOfGo = Character.this.typeOfGo;
+            final Place localPlace = Character.this.localPlace;
+
+            public int getSpeed() {
+                return speed;
+            }
+
+            public TypeOfGo getTypeOfGo() {
+                return typeOfGo;
+            }
+
+            public Place getLocalPlace() {
+                return localPlace;
+            }
+
+            @Override
+            public String toString() {
+                return ("Скорость: " + speed + ", тип: " + typeOfGo + ", локация: " + localPlace);
+            }
+        }
+        return new CharacterMovingContainer();
     }
 
     public void say(String message, TypeOfSpeaking typeOfSpeaking) {
@@ -128,7 +145,7 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
 
     public void say(String message) {
         System.out.println(this.getName() + " " + TypeOfSpeaking.SPEAK + ": \"" + message + "\"");
-        MessageHistory.addNewMessage(this, message, typeOfSpeaking);
+        MessageHistory.addNewMessage(this, message, this.typeOfSpeaking);
     }
     public void catchMessage(Character character, String message) {
         this.haveMessage = Boolean.TRUE;

@@ -20,6 +20,6 @@ public class Owl extends Animal {
 
     @Override
     public void say(String message) {
-        super.say(message, TypeOfSpeaking.EXPLANATION);
+        super.say(message, this.typeOfSpeaking);
     }
 }

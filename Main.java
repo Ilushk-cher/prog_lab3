@@ -1,8 +1,6 @@
+import Abstracts.Character;
 import Classes.*;
-import Enums.BodyPosition;
-import Enums.State;
-import Enums.TailPosition;
-import Enums.TypeOfJump;
+import Enums.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +11,7 @@ public class Main {
         Human krisRob = new Human("Кристофер Робин", coast);
         krisRob.startImagine();
 
+        Bear vinny = new Bear("Винни-Пух", coast);
         Kangaroo roo = new Kangaroo("Ру", coast);
         Pig pig = new Pig("Пятачок", coast, BodyPosition.LAY, State.NOT_AWAKE);
         Owl owl = new Owl("Сова", coast);
@@ -20,8 +19,16 @@ public class Main {
         Donkey donkey = new Donkey("Иа", coast);
         Rabbit rabbit = new Rabbit("Кролик", coast);
 
+        vinny.countTo(10);
+
         roo.moveTo(pond);
         roo.startSwim();
+
+        roo.say("пи-пи что ли", TypeOfSpeaking.SQUEAK);
+        kanga.say("ёмаё, че случилось?", TypeOfSpeaking.SCREAM);
+
+        vinny.help(Boolean.TRUE);
+        krisRob.help(Boolean.TRUE);
 
         pig.setState(State.COMPLETELY_AWAKE);
         pig.setBodyPosition(BodyPosition.STAND);
@@ -44,11 +51,12 @@ public class Main {
         donkey.setTailPosition(TailPosition.DOWN);
         donkey.say("Все из-за этого мытья; но ты только держись за мой хвост, Ру, и все будет в порядке");
 
-        krisRob.help(Boolean.TRUE);
         krisRob.setSpeed(10);
 
         rabbit.help(Boolean.TRUE);
         rabbit.setSpeed(10);
+
+        System.out.println(krisRob.getMovingContainer().toString());
 
         System.out.println();
         MessageHistory.printMessageHistory();
