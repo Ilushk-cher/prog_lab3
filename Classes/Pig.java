@@ -2,7 +2,6 @@ package Classes;
 
 import Abstracts.Animal;
 import Enums.BodyPosition;
-import Enums.State;
 import Enums.TailPosition;
 import Enums.TypeOfSpeaking;
 
@@ -22,6 +21,21 @@ public class Pig extends Animal {
         super(name, localPlace, bodyPosition, tailPosition);
         this.state = state;
         System.out.println(this.getName() + " " + this.getState());
+    }
+
+    public enum State {
+        COMPLETELY_AWAKE("совершенно проснувшийся"), NOT_AWAKE("не проснувшийся"), PARTIALLY_AWAKE("частично проснувшийся");
+
+        private final String stateName;
+
+        State(String s) {
+            this.stateName = s;
+        }
+
+        @Override
+        public String toString() {
+            return this.stateName;
+        }
     }
 
     public String getState() {

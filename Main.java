@@ -1,4 +1,3 @@
-import Abstracts.Character;
 import Classes.*;
 import Enums.*;
 
@@ -13,7 +12,7 @@ public class Main {
 
         Bear vinny = new Bear("Винни-Пух", coast);
         Kangaroo roo = new Kangaroo("Ру", coast);
-        Pig pig = new Pig("Пятачок", coast, BodyPosition.LAY, State.NOT_AWAKE);
+        Pig pig = new Pig("Пятачок", coast, BodyPosition.LAY, Pig.State.NOT_AWAKE);
         Owl owl = new Owl("Сова", coast);
         Kangaroo kanga = new Kangaroo("Кенга", coast);
         Donkey donkey = new Donkey("Иа", coast);
@@ -30,7 +29,7 @@ public class Main {
         vinny.help(Boolean.TRUE);
         krisRob.help(Boolean.TRUE);
 
-        pig.setState(State.COMPLETELY_AWAKE);
+        pig.setState(Pig.State.COMPLETELY_AWAKE);
         pig.setBodyPosition(BodyPosition.STAND);
         pig.help(Boolean.TRUE);
         pig.jump(TypeOfJump.ON_SPOT);
@@ -60,5 +59,7 @@ public class Main {
 
         System.out.println();
         MessageHistory.printMessageHistory();
+
+        MessageHistory.getMakedMessage(11);
     }
 }

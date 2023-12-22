@@ -2,10 +2,12 @@ package Classes;
 
 import Abstracts.Character;
 import Enums.BodyPosition;
+import Enums.TypeOfSpeaking;
 import Interfaces.AbleToImagine;
 
 public class Human extends Character implements AbleToImagine {
     private WhatReal whatReal = WhatReal.REAl;
+    private final TypeOfSpeaking typeOfSpeaking = TypeOfSpeaking.CONVENE;
     public Human(String name, Place localPlace) {
         super(name, localPlace);
     }
@@ -47,6 +49,6 @@ public class Human extends Character implements AbleToImagine {
     }
 
     public void say(String message) {
-        System.out.println(this.getName() + " созывает: \"" + message + "\"");
+        super.say(message, this.typeOfSpeaking);
     }
 }

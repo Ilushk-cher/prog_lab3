@@ -6,6 +6,8 @@ import Enums.BodyPosition;
 import Enums.TypeOfGo;
 import Enums.TypeOfJump;
 import Enums.TypeOfSpeaking;
+import Exceptions.MessageYourself;
+import Exceptions.NegativeSpeed;
 import Interfaces.*;
 
 public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, AbleToGo, AbleToJump {
@@ -97,19 +99,21 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
     }
 
     public void setSpeed(int speed) {
-        System.out.print(this.getName());
-        if (this.speed != speed) {
-            this.speed = speed;
-        } else {
-            System.out.println(" все еще " + this.typeOfGo.toString());
-            return;
-        }
-        if (speed == 0) {
-            this.typeOfGo = TypeOfGo.STOP;
-        } else if (0 < speed && speed <= 8) {
-            this.typeOfGo = TypeOfGo.GO;
-        } else this.typeOfGo = TypeOfGo.RUN;
-        System.out.println(" теперь " + this.typeOfGo.toString());
+        if (speed >= 0) {
+            System.out.print(this.getName());
+            if (this.speed != speed) {
+                this.speed = speed;
+            } else {
+                System.out.println(" все еще " + this.typeOfGo.toString());
+                return;
+            }
+            if (speed == 0) {
+                this.typeOfGo = TypeOfGo.STOP;
+            } else if (speed <= 8) {
+                this.typeOfGo = TypeOfGo.GO;
+            } else this.typeOfGo = TypeOfGo.RUN;
+            System.out.println(" теперь " + this.typeOfGo.toString());
+        } else throw new NegativeSpeed(speed);
     }
 
     public MovingContainer getMovingContainer() {
@@ -155,11 +159,12 @@ public abstract class Character implements AbleToSpeak, AbleToMove, AbleToHelp, 
     }
 
     public void sendMessage(Character character, String message) {
-        System.out.print(this.getName() + " обращается к " + character.getName() + ": ");
-        System.out.println("\"" + message + "\"");
-        character.catchMessage(this, message);
-        MessageHistory.addNewMessage(this, character, message, typeOfSpeaking);
-
+        if (!this.equals(character)) {
+            System.out.print(this.getName() + " обращается к " + character.getName() + ": ");
+            System.out.println("\"" + message + "\"");
+            character.catchMessage(this, message);
+            MessageHistory.addNewMessage(this, character, message, typeOfSpeaking);
+        } else throw new MessageYourself(character);
     }
 
     public void answerMessage(String message) {

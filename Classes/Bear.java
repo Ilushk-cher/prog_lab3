@@ -32,7 +32,7 @@ public class Bear extends Animal implements Countable {
         count.countTo(number);
     }
 
-    public Boolean getCount() {
+    public Boolean getIsCount() {
         return isCount;
     }
 }

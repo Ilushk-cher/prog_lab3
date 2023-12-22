@@ -18,10 +18,6 @@ public class Kangaroo extends Animal implements AbleToSwim {
         super(name, localPlace, bodyPosition, tailPosition);
     }
 
-    public void say(String message) {
-        System.out.println(this.getName() + " говорит: \"" + message + "\"");
-    }
-
     public void startSwim() {
         if (isSwimming == Boolean.FALSE) {
             isSwimming = Boolean.TRUE;

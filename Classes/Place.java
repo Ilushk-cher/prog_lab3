@@ -6,6 +6,10 @@ public record Place(String name) {
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name;

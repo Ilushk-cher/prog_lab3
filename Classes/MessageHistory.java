@@ -2,6 +2,7 @@ package Classes;
 
 import Abstracts.Character;
 import Enums.TypeOfSpeaking;
+import Exceptions.MessageYourself;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,10 @@ public class MessageHistory {
     }
 
     public static void addNewMessage(Character whoSay, Character whoCatch, String message, TypeOfSpeaking typeOfSpeaking) {
-        messageHistory.add(MakedMessage.makeMessage(whoSay, whoCatch, message, typeOfSpeaking));
+        if (!whoSay.equals(whoCatch)) {
+            messageHistory.add(MakedMessage.makeMessage(whoSay, whoCatch, message, typeOfSpeaking));
+
+        } else throw new MessageYourself(whoSay);
     }
 
     public static void addNewMessage(Character whoSay, String message, TypeOfSpeaking typeOfSpeaking) {
@@ -69,11 +73,12 @@ public class MessageHistory {
     }
 
     public static MakedMessage getMakedMessage(int number) {
-        return messageHistory.get(number);
-    }
-
-    public static ArrayList<MakedMessage> getHistoryMessage() {
-        return messageHistory;
+        try {
+            return messageHistory.get(number);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Такого сообщения не существует, возвращено последнее сообщение");
+        }
+        return messageHistory.get(messageHistory.size() - 1);
     }
 
     public static void printMessageHistory() {
